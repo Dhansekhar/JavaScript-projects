@@ -2,7 +2,7 @@
 Project 1 - form-validator
 challenges:
 1. checkout a new branch (called form-validator) from master branch.
-2. create a three files index.html,style.css and script.js
+2. create a three files index.html,style.css and script.js under form-validator folder.
 3. create a 'Registarion form' as shown below.
    <img width="1092" height="659" alt="image" src="https://github.com/user-attachments/assets/3e745579-49ae-482d-a3c1-52a72044c5f5" />
 4. Add validations (required fields, email format, password mismatch) on fields on 'submit' button click
