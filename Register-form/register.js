@@ -1,13 +1,15 @@
 const form = document.querySelector("#form");
+const btnSumbmit=document.querySelector('#submit')
 const username = document.querySelector("#username");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const cpassword = document.querySelector("#cpassword");
 
-form.addEventListener("click", (e) =>{
-  
-    if(!validateInputs()){
-          e.preventDefault;
+btnSumbmit.addEventListener("click", (e) =>{
+
+   e.preventDefault();
+    if(validateInputs()){
+         alert("Register form submit successfully")
     }
 
 })
@@ -23,6 +25,7 @@ function validateInputs(){
         success=false;
         setError(username,"Username is required")  
     }else{
+        success=true;
         setSucess(username)
     }
 
@@ -30,8 +33,10 @@ function validateInputs(){
         success=false;
         setError(email,'Enter email ID')
     }else if(!isValidEmail(emailVal)){
+        success=false;
         setError(email,'Enter valid Email id')
     }else{
+        success=true;
         setSucess(email)
     }
 
@@ -39,8 +44,10 @@ function validateInputs(){
         success=false;
         setError(password ,'enter password required')
     }else if(passwordVal.length<8){
+        success=false;
         setError(password,'password must 8 characters')
     }else{
+        success=true;
         setSucess(password)
     }
 
@@ -48,8 +55,10 @@ function validateInputs(){
         success=false;
         setError(cpassword,'enter confirm password')
     }else if(cpasswordVal!=passwordVal){
+        success=false;
         setError(cpassword,'password does not match')
     }else{
+        success=true;
         setSucess(cpassword)
     }
     return success;
