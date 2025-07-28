@@ -10,6 +10,9 @@ font-family: "Lato", sans-serif;
 margin: 0;
 
 }
+body.show-nav{
+    transform: translate(200px);
+}
 nav{
     background-color: var(--primary-color);
     border-right: 2px solid rgba(200, 200, 200, 0.1);
@@ -108,6 +111,10 @@ button:focus{
     right: 0;
     bottom: 0;
 }
+.show-modal{
+    display: block;
+    opacity: 1;
+}
 .modal{
     background-color: #fff;
     border-radius: 5p;
@@ -119,6 +126,8 @@ button:focus{
     transform: translate(-50%,-50%);
     max-width: 100%;
     width: 400px;
+    animation-name: modalopen;
+    animation-duration: 1s;
     
 
 }
@@ -151,4 +160,13 @@ button:focus{
     position: absolute;
     top: 0;
     right: 0;
+    
+ }
+ @keyframes modalopen{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
  }
