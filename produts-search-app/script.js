@@ -3,6 +3,7 @@ let cartCount=document.querySelector('#cartCount')
 
 let searchInput = document.querySelector('#search');
 let filterCheckboxes = document.querySelectorAll('.check');
+let filtersContainer=document.querySelector('#filters-container')
 // console.log(product_element);
 
 
@@ -93,6 +94,7 @@ products.forEach((product)=>{
     product_element.appendChild(productEL)
 })
 
+filtersContainer.addEventListener('change',Serachfunction)
 let cart=0;
 
 function createProductElement(product){
@@ -113,16 +115,46 @@ productdiv.addEventListener('click',()=>{
 return productdiv
 }
 
-searchInput.addEventListener('input',Searchfunction())
-
-function Searchfunction(){
-console.log("Hello");
-
-let getText= searchInput.value().trim();
-console.log(getText);
+searchInput.addEventListener('input', Serachfunction )
 
 
-}
+function Serachfunction() {
+  const searchValue = searchInput.value.toLowerCase().trim();
+  // console.log(searchValue);
+  // console.log(productElementarray);
+  
+  productElementarray.forEach((productValue,index) => {
+
+    // get product name from element
+    // const productName = productValue
+    //   .querySelector('img')
+    //   .getAttribute('alt')
+    //   .toLowerCase();
+      const productName=products[index]
+//get search term 
+      const matchesSearchTerm = productName.name.toLowerCase().includes(searchValue)
+      // checed Items 
+      const checkedItem =Array.from(filterCheckboxes).filter((check)=> check.checked).map((check)=>check.id)
+      const IsinCheckedItem=checkedItem.length===0 || checkedItem.includes(productName.type)
+    
+
+      if(matchesSearchTerm && IsinCheckedItem){
+        productValue.classList.remove('hidden')
+      }else{
+        productValue.classList.add('hidden')
+      }
+
+      //  console.log(productName);
+   
+  //   // search text
+    // if (productName.includes(searchValue)) {
+    //   productValue.style.display = 'block';
+    // } else {
+    //   productValue.style.display = 'none';
+    // }
+   
+  });
+};
 
 
 
